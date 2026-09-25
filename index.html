@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Eagle - Unlock Access</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  color: white;
+  background:
+    radial-gradient(circle at 15% 15%, #7c3aed55, transparent 35%),
+    radial-gradient(circle at 85% 85%, #06b6d455, transparent 35%),
+    linear-gradient(135deg, #020617, #0f172a, #111827);
+}
+
+.container {
+  width: 100%;
+  max-width: 450px;
+  padding: 28px 22px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+  backdrop-filter: blur(20px);
+  border-radius: 28px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.5);
+}
+
+.logo {
+  width: 72px;
+  height: 72px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 22px;
+  background: linear-gradient(135deg,#8b5cf6,#06b6d4);
+  font-size: 36px;
+  box-shadow: 0 12px 35px rgba(99,102,241,.4);
+}
+
+h1 {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 28px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #aeb8ca;
+  font-size: 14px;
+  margin: 8px 0 25px;
+}
+
+.task {
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.1);
+  margin-top: 15px;
+}
+
+.task.locked {
+  opacity: .45;
+  pointer-events: none;
+}
+
+.task-title {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 9px;
+}
+
+.icon {
+  width: 43px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  background: rgba(255,255,255,.09);
+  font-size: 21px;
+}
+
+.description {
+  color: #9ca9bd;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+button {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  padding: 14px;
+  border-radius: 13px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 8px;
+  transition: .2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.youtube {
+  background: linear-gradient(135deg,#ff0000,#dc2626);
+}
+
+.telegram {
+  background: linear-gradient(135deg,#229ed9,#168ac0);
+}
+
+.instagram {
+  background: linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+}
+
+.verify {
+  background: linear-gradient(135deg,#8b5cf6,#6366f1);
+}
+
+.download {
+  background: linear-gradient(135deg,#22c55e,#16a34a);
+}
+
+.timer {
+  display: none;
+  text-align: center;
+  margin-top: 15px;
+  padding: 13px;
+  border-radius: 12px;
+  background: rgba(139,92,246,.12);
+  border: 1px solid rgba(139,92,246,.3);
+  color: #c4b5fd;
+  font-weight: bold;
+}
+
+.status {
+  display: none;
+  text-align: center;
+  margin-top: 12px;
+  color: #4ade80;
+  font-size: 13px;
+}
+
+.password-box {
+  display: none;
+  margin-top: 15px;
+  padding: 16px;
+  border-radius: 15px;
+  background: rgba(2,6,23,.8);
+}
+
+input {
+  width: 100%;
+  padding: 13px;
+  border-radius: 11px;
+  border: 1px solid #334155;
+  background: #111827;
+  color: white;
+  outline: none;
+  margin-bottom: 8px;
+}
+
+.error {
+  display: none;
+  color: #f87171;
+  text-align: center;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.footer {
+  text-align: center;
+  color: #64748b;
+  font-size: 11px;
+  margin-top: 22px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="logo">🦅</div>
+
+  <h1>The Eagle</h1>
+
+  <p class="subtitle">
+    Complete all tasks to unlock your APK.
+  </p>
+
+
+  <!-- TASK 1 -->
+
+  <div class="task" id="task1">
+
+    <div class="task-title">
+      <div class="icon">▶️</div>
+      YouTube
+    </div>
+
+    <p class="description">
+      Subscribe to the YouTube channel, then verify your task.
+    </p>
+
+    <button class="youtube" onclick="openLink(
+      'https://youtube.com/@the-eagle.09?si=wlXyePUxORChF-pZ'
+    )">
+      ▶ Subscribe on YouTube
+    </button>
+
+    <button
+      class="verify"
+      id="verify1"
+      onclick="startTimer(1)">
+      ✓ Verify YouTube
+    </button>
+
+    <div class="timer" id="timer1">
+      Please wait <span id="count1">10</span> seconds...
+    </div>
+
+    <div class="status" id="status1">
+      ✓ YouTube task completed
+    </div>
+
+  </div>
+
+
+  <!-- TASK 2 -->
+
+  <div class="task locked" id="task2">
+
+    <div class="task-title">
+      <div class="icon">✈️</div>
+      Telegram
+    </div>
+
+    <p class="description">
+      Join the Telegram channel, then verify your task.
+    </p>
+
+    <button class="telegram" onclick="openLink(
+      'https://t.me/TheEagle09inc'
+    )">
+      ✈️ Join Telegram
+    </button>
+
+    <button
+      class="verify"
+      id="verify2"
+      onclick="startTimer(2)">
+      ✓ Verify Telegram
+    </button>
+
+    <div class="timer" id="timer2">
+      Please wait <span id="count2">10</span> seconds...
+    </div>
+
+    <div class="status" id="status2">
+      ✓ Telegram task completed
+    </div>
+
+  </div>
+
+
+  <!-- TASK 3 -->
+
+  <div class="task locked" id="task3">
+
+    <div class="task-title">
+      <div class="icon">📸</div>
+      Instagram
+    </div>
+
+    <p class="description">
+      Follow the Instagram profile, then verify your task.
+    </p>
+
+    <button class="instagram" onclick="openLink(
+      'https://www.instagram.com/dileepsingh__rathore?stkn=b2NnMW5oZWNvMGhx'
+    )">
+      📸 Follow on Instagram
+    </button>
+
+    <button
+      class="verify"
+      id="verify3"
+      onclick="startTimer(3)">
+      ✓ Verify Instagram
+    </button>
+
+    <div class="timer" id="timer3">
+      Please wait <span id="count3">10</span> seconds...
+    </div>
+
+    <div class="status" id="status3">
+      ✓ Instagram task completed
+    </div>
+
+  </div>
+
+
+  <!-- DOWNLOAD -->
+
+  <div class="task locked" id="downloadTask">
+
+    <div class="task-title">
+      <div class="icon">📦</div>
+      APK Download
+    </div>
+
+    <p class="description">
+      All tasks completed. Enter the password to unlock your APK.
+    </p>
+
+    <button class="download" onclick="showPassword()">
+      ⬇️ Download APK
+    </button>
+
+    <div class="password-box" id="passwordBox">
+
+      <input
+        type="password"
+        id="passwordInput"
+        placeholder="Enter password">
+
+      <button class="download" onclick="checkPassword()">
+        🔓 Unlock & Download
+      </button>
+
+      <div class="error" id="error">
+        ✕ Incorrect password
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer">
+    Complete the tasks to unlock your download.
+  </div>
+
+</div>
+
+
+<script>
+
+function openLink(url) {
+  window.open(url, "_blank");
+}
+
+
+function startTimer(taskNumber) {
+
+  const verifyButton =
+    document.getElementById("verify" + taskNumber);
+
+  const timer =
+    document.getElementById("timer" + taskNumber);
+
+  const counter =
+    document.getElementById("count" + taskNumber);
+
+  const status =
+    document.getElementById("status" + taskNumber);
+
+  verifyButton.disabled = true;
+  timer.style.display = "block";
+
+  let seconds = 10;
+  counter.innerText = seconds;
+
+  const interval = setInterval(function() {
+
+    seconds--;
+
+    counter.innerText = seconds;
+
+    if (seconds <= 0) {
+
+      clearInterval(interval);
+
+      timer.style.display = "none";
+      status.style.display = "block";
+
+      if (taskNumber === 1) {
+        document.getElementById("task2")
+          .classList.remove("locked");
+      }
+
+      if (taskNumber === 2) {
+        document.getElementById("task3")
+          .classList.remove("locked");
+      }
+
+      if (taskNumber === 3) {
+        document.getElementById("downloadTask")
+          .classList.remove("locked");
+      }
+
+    }
+
+  }, 1000);
+}
+
+
+function showPassword() {
+
+  document.getElementById("passwordBox")
+    .style.display = "block";
+
+}
+
+
+function checkPassword() {
+
+  const password =
+    document.getElementById("passwordInput").value;
+
+  const error =
+    document.getElementById("error");
+
+  if (password === "6969") {
+
+    /*
+      IMPORTANT:
+      Yahan apne APK ka direct download URL lagao.
+    */
+
+    const apkURL = "YOUR_APK_DOWNLOAD_LINK_HERE";
+
+    if (apkURL === "YOUR_APK_DOWNLOAD_LINK_HERE") {
+
+      alert("APK download link abhi set nahi kiya gaya.");
+
+      return;
+    }
+
+    error.style.display = "none";
+
+    const link = document.createElement("a");
+
+    link.href = apkURL;
+    link.download = "";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+  } else {
+
+    error.style.display = "block";
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
