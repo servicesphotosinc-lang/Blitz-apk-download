@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Eagle - Unlock Access</title>
+
+<title>The Eagle - Unlock APK</title>
 
 <style>
 * {
@@ -120,6 +121,10 @@ button:hover {
   transform: translateY(-2px);
 }
 
+button:active {
+  transform: scale(.98);
+}
+
 button:disabled {
   opacity: .45;
   cursor: not-allowed;
@@ -172,6 +177,7 @@ button:disabled {
   padding: 16px;
   border-radius: 15px;
   background: rgba(2,6,23,.8);
+  border: 1px solid rgba(255,255,255,.08);
 }
 
 input {
@@ -183,6 +189,11 @@ input {
   color: white;
   outline: none;
   margin-bottom: 8px;
+  font-size: 15px;
+}
+
+input:focus {
+  border-color: #8b5cf6;
 }
 
 .error {
@@ -199,6 +210,16 @@ input {
   font-size: 11px;
   margin-top: 22px;
 }
+
+@media (max-width: 400px) {
+  .container {
+    padding: 23px 16px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+}
 </style>
 </head>
 
@@ -206,7 +227,9 @@ input {
 
 <div class="container">
 
-  <div class="logo">🦅</div>
+  <div class="logo">
+    🦅
+  </div>
 
   <h1>The Eagle</h1>
 
@@ -215,7 +238,7 @@ input {
   </p>
 
 
-  <!-- TASK 1 -->
+  <!-- ==================== TASK 1 ==================== -->
 
   <div class="task" id="task1">
 
@@ -225,34 +248,44 @@ input {
     </div>
 
     <p class="description">
-      Subscribe to the YouTube channel, then verify your task.
+      Subscribe to our YouTube channel and then verify your task.
     </p>
 
-    <button class="youtube" onclick="openLink(
-      'https://youtube.com/@the-eagle.09?si=wlXyePUxORChF-pZ'
-    )">
+    <button
+      class="youtube"
+      onclick="openLink('https://youtube.com/@the-eagle.09?si=wlXyePUxORChF-pZ')">
+
       ▶ Subscribe on YouTube
+
     </button>
 
     <button
       class="verify"
       id="verify1"
       onclick="startTimer(1)">
+
       ✓ Verify YouTube
+
     </button>
 
     <div class="timer" id="timer1">
-      Please wait <span id="count1">10</span> seconds...
+
+      Please wait
+      <span id="count1">10</span>
+      seconds...
+
     </div>
 
     <div class="status" id="status1">
+
       ✓ YouTube task completed
+
     </div>
 
   </div>
 
 
-  <!-- TASK 2 -->
+  <!-- ==================== TASK 2 ==================== -->
 
   <div class="task locked" id="task2">
 
@@ -262,34 +295,44 @@ input {
     </div>
 
     <p class="description">
-      Join the Telegram channel, then verify your task.
+      Join our Telegram channel and then verify your task.
     </p>
 
-    <button class="telegram" onclick="openLink(
-      'https://t.me/TheEagle09inc'
-    )">
+    <button
+      class="telegram"
+      onclick="openLink('https://t.me/TheEagle09inc')">
+
       ✈️ Join Telegram
+
     </button>
 
     <button
       class="verify"
       id="verify2"
       onclick="startTimer(2)">
+
       ✓ Verify Telegram
+
     </button>
 
     <div class="timer" id="timer2">
-      Please wait <span id="count2">10</span> seconds...
+
+      Please wait
+      <span id="count2">10</span>
+      seconds...
+
     </div>
 
     <div class="status" id="status2">
+
       ✓ Telegram task completed
+
     </div>
 
   </div>
 
 
-  <!-- TASK 3 -->
+  <!-- ==================== TASK 3 ==================== -->
 
   <div class="task locked" id="task3">
 
@@ -299,34 +342,44 @@ input {
     </div>
 
     <p class="description">
-      Follow the Instagram profile, then verify your task.
+      Follow the Instagram profile and then verify your task.
     </p>
 
-    <button class="instagram" onclick="openLink(
-      'https://www.instagram.com/dileepsingh__rathore?stkn=b2NnMW5oZWNvMGhx'
-    )">
+    <button
+      class="instagram"
+      onclick="openLink('https://www.instagram.com/dileepsingh__rathore?stkn=b2NnMW5oZWNvMGhx')">
+
       📸 Follow on Instagram
+
     </button>
 
     <button
       class="verify"
       id="verify3"
       onclick="startTimer(3)">
+
       ✓ Verify Instagram
+
     </button>
 
     <div class="timer" id="timer3">
-      Please wait <span id="count3">10</span> seconds...
+
+      Please wait
+      <span id="count3">10</span>
+      seconds...
+
     </div>
 
     <div class="status" id="status3">
+
       ✓ Instagram task completed
+
     </div>
 
   </div>
 
 
-  <!-- DOWNLOAD -->
+  <!-- ==================== DOWNLOAD ==================== -->
 
   <div class="task locked" id="downloadTask">
 
@@ -336,11 +389,15 @@ input {
     </div>
 
     <p class="description">
-      All tasks completed. Enter the password to unlock your APK.
+      All tasks are completed. Enter the password to unlock your APK.
     </p>
 
-    <button class="download" onclick="showPassword()">
+    <button
+      class="download"
+      onclick="showPassword()">
+
       ⬇️ Download APK
+
     </button>
 
     <div class="password-box" id="passwordBox">
@@ -348,14 +405,21 @@ input {
       <input
         type="password"
         id="passwordInput"
-        placeholder="Enter password">
+        placeholder="Enter download password"
+        autocomplete="off">
 
-      <button class="download" onclick="checkPassword()">
+      <button
+        class="download"
+        onclick="checkPassword()">
+
         🔓 Unlock & Download
+
       </button>
 
       <div class="error" id="error">
+
         ✕ Incorrect password
+
       </div>
 
     </div>
@@ -364,7 +428,9 @@ input {
 
 
   <div class="footer">
-    Complete the tasks to unlock your download.
+
+    Complete the tasks to access your download.
+
   </div>
 
 </div>
@@ -372,10 +438,14 @@ input {
 
 <script>
 
+/* ==================== LINKS ==================== */
+
 function openLink(url) {
   window.open(url, "_blank");
 }
 
+
+/* ==================== TIMER ==================== */
 
 function startTimer(taskNumber) {
 
@@ -391,11 +461,17 @@ function startTimer(taskNumber) {
   const status =
     document.getElementById("status" + taskNumber);
 
+
+  // Prevent double clicking
   verifyButton.disabled = true;
+
+  // Show timer
   timer.style.display = "block";
 
   let seconds = 10;
+
   counter.innerText = seconds;
+
 
   const interval = setInterval(function() {
 
@@ -403,41 +479,63 @@ function startTimer(taskNumber) {
 
     counter.innerText = seconds;
 
+
     if (seconds <= 0) {
 
       clearInterval(interval);
 
       timer.style.display = "none";
+
       status.style.display = "block";
 
+
+      // Unlock next task
+
       if (taskNumber === 1) {
-        document.getElementById("task2")
+
+        document
+          .getElementById("task2")
           .classList.remove("locked");
+
       }
+
 
       if (taskNumber === 2) {
-        document.getElementById("task3")
+
+        document
+          .getElementById("task3")
           .classList.remove("locked");
+
       }
 
+
       if (taskNumber === 3) {
-        document.getElementById("downloadTask")
+
+        document
+          .getElementById("downloadTask")
           .classList.remove("locked");
+
       }
 
     }
 
   }, 1000);
+
 }
 
 
+/* ==================== PASSWORD BOX ==================== */
+
 function showPassword() {
 
-  document.getElementById("passwordBox")
+  document
+    .getElementById("passwordBox")
     .style.display = "block";
 
 }
 
+
+/* ==================== APK DOWNLOAD ==================== */
 
 function checkPassword() {
 
@@ -447,32 +545,37 @@ function checkPassword() {
   const error =
     document.getElementById("error");
 
+
+  /* Your APK direct download link */
+
+  const apkURL =
+    "https://github.com/servicesphotosinc-lang/Blitz-apk-download/releases/download/V1.0/TheEagle._19.4.0-Speed-Improved-Fixed.apk";
+
+
+  /* Password */
+
   if (password === "6969") {
-
-    /*
-      IMPORTANT:
-      Yahan apne APK ka direct download URL lagao.
-    */
-
-    const apkURL = "YOUR_APK_DOWNLOAD_LINK_HERE";
-
-    if (apkURL === "YOUR_APK_DOWNLOAD_LINK_HERE") {
-
-      alert("APK download link abhi set nahi kiya gaya.");
-
-      return;
-    }
 
     error.style.display = "none";
 
-    const link = document.createElement("a");
+
+    /*
+      Start APK download
+    */
+
+    const link =
+      document.createElement("a");
 
     link.href = apkURL;
-    link.download = "";
+
+    link.download = "TheEagle.apk";
 
     document.body.appendChild(link);
+
     link.click();
+
     document.body.removeChild(link);
+
 
   } else {
 
@@ -481,6 +584,21 @@ function checkPassword() {
   }
 
 }
+
+
+/* ==================== ENTER KEY ==================== */
+
+document
+  .getElementById("passwordInput")
+  .addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+
+      checkPassword();
+
+    }
+
+  });
 
 </script>
 
